@@ -37,6 +37,7 @@ Aadi should have gone over the contents of each directory. The frontend was boot
 We don't have an official style guide but we ask that you do the following:
 * Use descriptive variable names/function names
 * Add a comment before each function describing its behavior, arguments it accepts, and what it returns (if anything)
+* Comments in any unclear parts of functions
 
 If you need a style guide to reference, we recommend Airbnb's React/JSX style guide (<https://airbnb.io/javascript/react/>) and Google's JavaScript style guide (<https://google.github.io/styleguide/jsguide.html>) but again note that you **do NOT** need to follow either of these.
 
