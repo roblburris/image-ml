@@ -10,7 +10,7 @@ We'll be using Git/Github for version control. The basic idea of Git is that it 
 
 Aadi should have gone over some of the basic Git commands and shown how to fork this repository in the May 6 session. As mentioned in today's class, this will be our workflow for contributing to the codebase:
 
-**Starting Out**
+### Starting Out
 1. Create a Github account. (Psst: This is a great place to you showcase projects you've done!)
 2. In the homepage of the repository, look for the fork button in the top right of your screen.
 3. You should now have a copy of this repository in your account. 
@@ -20,7 +20,7 @@ Aadi should have gone over some of the basic Git commands and shown how to fork 
 
 Source: <http://kbroman.org/github_tutorial/pages/fork.html>
 
-**Writing Code**
+### Writing Code
 1. **ALWAYS ALWAYS ALWAYS** do a pull from **this** repository to make sure you're up to date with the latest changes. Assuming you used the command above, use this command to pull from this repo (aka the main codebase):
 > `git pull roblburris master`
 2. Commit and push your code to your repository (**only push working code!!!**). Once done, open a new pull request on GitHub (this is done on your own repository page) and include description of the changes you've made.
@@ -28,12 +28,12 @@ Source: <http://kbroman.org/github_tutorial/pages/fork.html>
 * If we note any problems, fix the issues and submit another pull request.
 * If there are no problems, good work! Edit the tasklist and mark the feature/task as complete (add the date finished next to your name).
 
-**Repo Overview**
+### Repo Overview
 In this repository, we've divided the frontend and backend into two directories - `frontend` and `backend`. Each directory has a `TASKLIST.MD` file that has all of the tasks you need to do. For now, the tasklists will be quite sparse, as you progress in the project feel free to add to the tasklists. In other words, the tasklists will be enough to get started but ideally you will add to the tasklist.
 
 Aadi should have gone over the contents of each directory. The frontend was bootstrapped using Create React App while the backend is just a single Node.js file with a `packages.json` file (be sure to run `npm install` to download the latest packages!). Hopefully the size of each directory will grow and by the end of this project we will have a very cool repo to show off!
 
-**Style Guide**
+### Style Guide 
 We don't have an official style guide but we ask that you do the following:
 * Use descriptive variable names/function names
 * Add a comment before each function describing its behavior, arguments it accepts, and what it returns (if anything)
