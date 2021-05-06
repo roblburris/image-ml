@@ -14,7 +14,7 @@ Aadi should have gone over some of the basic Git commands and shown how to fork 
 0. Create a Github account. (Psst: This is a great place to you showcase projects you've done!)
 1. In the homepage of the repository, look for the fork button in the top right of your screen.
 2. You should now have a copy of this repository in your account. 
-3. Clone the repository to your local machine or <repl.it>
+3. Clone the repository to your local machine or <https://repl.it/>
 4. Add **this** repsitory as a remote origin. Use the following command:
 > `git remote add roblburris git://github.com/roblburris/odle-apc-webapp`
 
