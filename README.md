@@ -29,7 +29,7 @@ Source: <http://kbroman.org/github_tutorial/pages/fork.html>
 * If there are no problems, good work! Edit the tasklist and mark the feature/task as complete (add the date finished next to your name).
 
 ### Repo Overview
-In this repository, we've divided the frontend and backend into two directories - `frontend` and `backend`. Each directory has a `TASKLIST.MD` file that has all of the tasks you need to do. For now, the tasklists will be quite sparse, as you progress in the project feel free to add to the tasklists. In other words, the tasklists will be enough to get started but ideally you will add to the tasklist.
+In this repository, we've divided the frontend and backend into two directories - `frontend` and `backend`. Each directory has a `TASKLIST.MD` file that has all of the tasks you need to do. All of you will be responsible for writing the tasklist together based on the high level description we provide.
 
 Aadi should have gone over the contents of each directory. The frontend was bootstrapped using Create React App while the backend is just a single Node.js file with a `packages.json` file (be sure to run `npm install` to download the latest packages!). Hopefully the size of each directory will grow and by the end of this project we will have a very cool repo to show off!
 
