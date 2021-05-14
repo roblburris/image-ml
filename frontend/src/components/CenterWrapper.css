@@ -2,7 +2,15 @@
   flex-direction: column;
 }
 
+@font-face {
+  font-family: 'HeaderFont';
+  src: local('HeaderFont'), url(../fonts/header.otf) format('opentype');
+}
+
+
 h1 {
   font-size: 4em;
   margin: 0;
+  font-family: HeaderFont, Roboto;
+  text-transform: uppercase;
 }
