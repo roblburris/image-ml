@@ -1,4 +1,8 @@
 .CenterWrapper {
-  display: flex;
   flex-direction: column;
+}
+
+h1 {
+  font-size: 4em;
+  margin: 0;
 }
