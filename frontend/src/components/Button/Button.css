@@ -6,3 +6,13 @@ button {
   padding: 0.7em 2em;
   transition-duration: 0.5s;
 }
+
+.btn-text {
+  background: linear-gradient(180deg, #13B136 0%, #0A5E82 100%);
+  background-clip: text;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
