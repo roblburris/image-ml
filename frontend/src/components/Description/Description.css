@@ -1,0 +1,11 @@
+.progress {
+    font-size: 1.2em;
+    border-radius: 100vw;
+    border: none;
+    background-color: #FFFFFF;
+    transition-duration: 0.5s;
+    min-width: 50px;
+    min-height:30px;
+    margin: 1rem 0;
+    cursor: pointer;
+}
