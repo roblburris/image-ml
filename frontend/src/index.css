@@ -13,4 +13,5 @@ body {
   font-style: normal;
   font-weight: normal;
   color: #fff;
+  font-family: Arial; /*A fake font for now, replace later */
 }
