@@ -11,7 +11,7 @@ Aadi should have gone over some of the basic Git commands and shown how to fork 
 3. You should now have a copy of this repository in your account. 
 4. Clone the repository to your local machine or <https://repl.it/>
 5. Add **this** repsitory as a remote origin. Use the following command:
-> `git remote add roblburris git://github.com/roblburris/odle-apc-webapp`
+> `git remote add roblburris git://github.com/roblburris/image-ml`
 
 Source: <http://kbroman.org/github_tutorial/pages/fork.html>
 
