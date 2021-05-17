@@ -1,4 +1,4 @@
-# Odle Advanced Coding Club - Final Project
+# Final Project
 
 ## Updates
 ### May 6, 2021
