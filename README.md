@@ -1,10 +1,5 @@
 # Final Project
 
-## Updates
-### May 6, 2021
-Hello everyone! Apologies for not being able to attend today's session - I unfortunately a lot of work this week but one of my good friends, Aadi, will be teaching today. Next week Aadi will be teaching again and Nicholas should be back as well. I'll be returning for the final session where I'll talk about Machine Learning and deployment but if you have any issues with the project (especially this repo!), feel free to email me at <roblburris@gmail.com>.
-\- RB
-
 ## Overview
 We'll be using Git/Github for version control. The basic idea of Git is that it is a way to track changes and save a cache of our files. Imagine you were working on some code and ended up writing a function that broke the already working file. In attempt to fix it, you change other functions and end up making the problem worse but to your dismay, you've overwritten your code file. With Git, we continually save versions of our codebase to prevent this from happening. If we break something, we will always be able to revert back to a previous version. 
 
