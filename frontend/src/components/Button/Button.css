@@ -16,3 +16,7 @@ button {
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
 }
+
+.progress-btn {
+  padding: 0.7em 35vw;
+}

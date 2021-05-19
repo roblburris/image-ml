@@ -2,7 +2,7 @@ import React from 'react';
 import './CenterWrapper.css';
 
 import NormalDescription from './Description/NormalDescription';
-import UploadButton from './Button/UploadButton';
+import Button from './Button/Button';
 
 type CenterWrapperProps = {
   state: number,
@@ -16,7 +16,8 @@ function CenterWrapper({state, setState}: CenterWrapperProps) {
     <div className="CenterWrapper">
       <h1>ImageML</h1>
       <NormalDescription/>
-      <UploadButton/> 
+
+      <Button state={state} setState={setState}/> 
     </div>
   );
 }
