@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { resultsState } from '../types';
 
-const useUploadImage = async (progress: number, setProgress: React.Dispatch<React.SetStateAction<number>>, setState: React.Dispatch<React.SetStateAction<number>>) => {
-  useEffect(() => {
-    console.log("aaaa");
-  })
+const uploadImage = async (progress: number, setProgress: React.Dispatch<React.SetStateAction<number>>, setState: React.Dispatch<React.SetStateAction<number>>) => {
+  while (progress !== 100) {
+    await new Promise<void>((res, _) => {
+      setTimeout(() => {
+        res();
+      }, 1000)
+    })
 
-  progress += 10;
-  setProgress(progress);
-  if (progress !== 100) {
-    setTimeout(useUploadImage, 200);
-  } else {
-    setState(resultsState);
+    setProgress(progress + 10);
   }
+  
+  setState(resultsState);
 }
 
-export default useUploadImage;
+export default uploadImage;
