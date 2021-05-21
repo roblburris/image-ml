@@ -11,7 +11,7 @@ function UploadButton({state, setState}: UploadBtnProps) {
   return (
     <button onClick={() => {
       setState(progressState);
-    }}>
+    }} className="button">
       <span className="btn-text">
         <i className="fa fa-upload"></i>&nbsp;
         Upload
