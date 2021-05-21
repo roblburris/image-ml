@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Description.css';
 
-function ResultDescription() {
+type ResultDescriptionProps = {
+  imageURL: string,
+  label: string,
+}
+
+function ResultDescription({imageURL, label}: ResultDescriptionProps) {
+  useEffect(() => {
+    let el = document.getElementById("result-img");
+    setTimeout(() => {
+      if (el) {
+        el.style.height = "50vh";
+      }
+    }, 0)
+  });
+
   return (
-    <img src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg"></img>
+    <img className="result-img" src={imageURL} alt={label} id="result-img"></img>
   )
 }
 

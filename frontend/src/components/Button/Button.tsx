@@ -6,9 +6,12 @@ import ProgressButton from './ProgressButton';
 type ButtonProps = {
   state: number,
   setState: React.Dispatch<React.SetStateAction<number>>,
+  
+  setImageURL: React.Dispatch<React.SetStateAction<string>>,
+  setLabel: React.Dispatch<React.SetStateAction<string>>,
 }
 
-function Button({state, setState}: ButtonProps) {
+function Button({state, setState, setImageURL, setLabel}: ButtonProps) {
   return (
     <>
 
@@ -20,7 +23,7 @@ function Button({state, setState}: ButtonProps) {
 
     {
       state === progressState && (
-        <ProgressButton state={state} setState={setState}></ProgressButton>
+        <ProgressButton setState={setState} state={state} setImageURL={setImageURL} setLabel={setLabel}></ProgressButton>
       )
     }
     </>

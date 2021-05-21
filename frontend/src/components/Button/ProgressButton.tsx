@@ -18,15 +18,17 @@ const getProgressStyles = (progress: number) => {
 type ProgressBtnProps = {
   state: number,
   setState: React.Dispatch<React.SetStateAction<number>>,
+  setImageURL: React.Dispatch<React.SetStateAction<string>>,
+  setLabel: React.Dispatch<React.SetStateAction<string>>,
 }
 
-function ProgressButton({state, setState}: ProgressBtnProps) {
+function ProgressButton({state, setState, setImageURL, setLabel}: ProgressBtnProps) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     document.getElementById("progress-btn")?.classList.add("progress-btn");
     
-    uploadImage(progress, setProgress, setState);
+    uploadImage(progress, setProgress, setState, setImageURL, setLabel);
   }, []);
 
   return (

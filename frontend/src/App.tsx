@@ -4,13 +4,15 @@ import CenterWrapper from './components/CenterWrapper';
 import { homePageState } from './types';
 
 function App() {
-  var [state, setState] = useState(homePageState);
+  const [state, setState] = useState(homePageState);
+  const [imageURL, setImageURL] = useState("");
+  const [label, setLabel] = useState("");
 
   return (
     <>
     <AppBar/>
     <div className="App">
-      <CenterWrapper setState={setState} state={state}/>
+      <CenterWrapper setState={setState} state={state} imageURL={imageURL} setImageURL={setImageURL} label={label} setLabel={setLabel}/>
     </div>
     </>
   );
