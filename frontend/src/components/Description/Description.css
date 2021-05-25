@@ -9,3 +9,8 @@
     margin: 1rem 0;
     cursor: pointer;
 }
+
+.result-img {
+    height: 0vh;
+    transition-duration: 0.5s;
+}

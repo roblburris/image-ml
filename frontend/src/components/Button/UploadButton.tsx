@@ -1,13 +1,17 @@
 import React from 'react';
+import { progressState } from '../../types';
 import './Button.css';
 
-interface Props {
-  setDescImageProgress: (value: any) => void
+type UploadBtnProps = {
+  state: number,
+  setState: React.Dispatch<React.SetStateAction<number>>,
 }
 
-const UploadButton: React.FC<Props> = ({setDescImageProgress}) => {
+function UploadButton({state, setState}: UploadBtnProps) {
   return (
-    <button onClick={() => {setDescImageProgress('progress')}}> 
+    <button onClick={() => {
+      setState(progressState);
+    }} className="button">
       <span className="btn-text">
         <i className="fa fa-upload"></i>&nbsp;
         Upload

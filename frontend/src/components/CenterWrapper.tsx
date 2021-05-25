@@ -1,26 +1,36 @@
 import React from 'react';
 import './CenterWrapper.css';
 
-import NormalDescription from './Description/NormalDescription';
-import UploadButton from './Button/UploadButton';
-import ProgressBar from './Description/ProgressBar';
+import Button from './Button/Button';
+import Description from './Description/Description';
+import { resultsState } from '../types';
 
-interface Props {
-  descImageProgress: 'static' | 'progress' | 'image', 
-  setDescImageProgress: (value: any) => void //Value is any because I am not sure what the type is for now,
-  uploadTags: 'upload' | 'tags', 
-  setUploadTags: (value: any) => void //Not sure what type is, will add later
+type CenterWrapperProps = {
+  state: number,
+  setState: React.Dispatch<React.SetStateAction<number>>,
+
+  imageURL: string,
+  setImageURL: React.Dispatch<React.SetStateAction<string>>,
+
+  label: string,
+  setLabel: React.Dispatch<React.SetStateAction<string>>,
 }
 
-const CenterWrapper: React.FC<Props> = ({descImageProgress, setDescImageProgress, uploadTags, setUploadTags}) => {
+function CenterWrapper({state, setState, imageURL, setImageURL, label, setLabel}: CenterWrapperProps) {
   return (
     // Should conditionally render UploadButton (import Progress and stuff from button folder)
     // Should conditionall render Description (normally do normal, but use the image one when processed)
     <div className="CenterWrapper">
       <h1>ImageML</h1>
-      {descImageProgress === "static" && <NormalDescription/>}
-      {descImageProgress === "progress" && <ProgressBar/>}
-      {uploadTags === "upload" && <UploadButton setDescImageProgress={setDescImageProgress} />} 
+      <Description state={state} setState={setState} imageURL={imageURL} label={label}/>
+
+      <Button setState={setState} state={state} setImageURL={setImageURL} setLabel={setLabel}/> 
+
+      {
+        state === resultsState && (
+          <p>Label: <span className="result-text">{label}</span></p>
+        )
+      }
     </div>
   );
 }
