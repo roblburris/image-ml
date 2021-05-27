@@ -1,7 +1,50 @@
 import React from 'react';
-import { resultsState } from '../types';
+import { backendPrefix, progressState, resultsState } from '../types';
+
+type fileSelectReturn = {
+  imgURL: string,
+  formData: FormData,
+}
 
 const uploadImage = async (progress: number, setProgress: React.Dispatch<React.SetStateAction<number>>, setState: React.Dispatch<React.SetStateAction<number>>, setImageURL: React.Dispatch<React.SetStateAction<string>>, setLabel: React.Dispatch<React.SetStateAction<string>>) => {
+  // Get file
+  const upload = document.createElement('input');
+  upload.type = "file";
+  upload.accept = "image/*";
+  document.body.appendChild(upload)
+  upload.click();
+  const fileData = await new Promise<fileSelectReturn>(async (res, rej) => {
+    const imgURL = await new Promise<string>((res, rej) => {
+      upload.onchange = (ev) => {
+        const reader = new FileReader();
+        reader.onerror = (ev) => {
+          rej(ev.target);
+        }
+  
+        reader.onload = (ev) => {
+          if (ev.target!.result) {
+            res(ev.target!.result as string);
+          }
+        }
+  
+        reader.readAsDataURL(upload.files![0])
+      }
+    })
+
+    let formData = new FormData();
+    console.log(upload.files![0].type);
+    formData.append("ml-image", upload.files![0]);
+
+    res({
+      imgURL: imgURL,
+      formData: formData,
+    });
+  });
+
+  // Process
+  setState(progressState);
+  setImageURL(fileData.imgURL);
+
   while (progress <= 100) {
     await new Promise<void>((res, _) => {
       // Make this the request handler instead of setTimeout handler
@@ -13,11 +56,9 @@ const uploadImage = async (progress: number, setProgress: React.Dispatch<React.S
     progress += 10;
     setProgress(progress);
   }
-  
   setState(resultsState);
 
   // Get results from request
-  setImageURL("https://i.pinimg.com/originals/bf/86/8c/bf868cc98ab5f73a8ae5fe762eb17a17.jpg");
   setLabel("Dog");
 }
 

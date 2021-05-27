@@ -9,21 +9,24 @@ type ButtonProps = {
   
   setImageURL: React.Dispatch<React.SetStateAction<string>>,
   setLabel: React.Dispatch<React.SetStateAction<string>>,
+
+  progress: number,
+  setProgress: React.Dispatch<React.SetStateAction<number>>,
 }
 
-function Button({state, setState, setImageURL, setLabel}: ButtonProps) {
+function Button({state, setState, setImageURL, setLabel, progress, setProgress}: ButtonProps) {
   return (
     <>
 
     {
       state === homePageState && (
-        <UploadButton state={state} setState={setState}></UploadButton>
+        <UploadButton state={state} setState={setState} progress={progress} setProgress={setProgress} setImageURL={setImageURL} setLabel={setLabel}></UploadButton>
       )
     }
 
     {
       state === progressState && (
-        <ProgressButton setState={setState} state={state} setImageURL={setImageURL} setLabel={setLabel}></ProgressButton>
+        <ProgressButton progress={progress}></ProgressButton>
       )
     }
     </>

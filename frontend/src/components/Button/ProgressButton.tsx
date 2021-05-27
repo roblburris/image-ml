@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './Button.css';
-import uploadImage from '../../hooks/uploadImage';
 
 const getProgressStyles = (progress: number) => {
   return {
@@ -16,19 +15,13 @@ const getProgressStyles = (progress: number) => {
 }
 
 type ProgressBtnProps = {
-  state: number,
-  setState: React.Dispatch<React.SetStateAction<number>>,
-  setImageURL: React.Dispatch<React.SetStateAction<string>>,
-  setLabel: React.Dispatch<React.SetStateAction<string>>,
+  progress: number,
 }
 
-function ProgressButton({state, setState, setImageURL, setLabel}: ProgressBtnProps) {
-  const [progress, setProgress] = useState(0);
+function ProgressButton({progress}: ProgressBtnProps) {
 
   useEffect(() => {
     document.getElementById("progress-btn")?.classList.add("progress-btn");
-    
-    uploadImage(progress, setProgress, setState, setImageURL, setLabel);
   }, []);
 
   return (
