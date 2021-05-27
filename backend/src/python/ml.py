@@ -30,17 +30,17 @@ def perform_inference(path):
   if img is None:
     return "ERROR: unable to process image"
   
-  input_tensor = TRANSFORM(img)
+  device = 'cuda' if torch.cuda.is_available() else 'cpu'
+  
+  input_tensor = TRANSFORM(img).to(device=device)
   input_batch = input_tensor.unsqueeze(0)
   
-  device = 'cuda' if torch.cuda.is_available() else 'cpu'
-  input_batch.to(device=device)
   model.to(device=device)
   
   with torch.no_grad():
     output = model(input_batch)
   
-  prob = torch.nn.functional.softmax(output[0], dim=0)
+  prob = torch.nn.functional.softmax(output[0], dim=0).to(device=device)
   predicted_index = torch.argmax(prob)
   
   try:
@@ -57,7 +57,7 @@ def main():
     return
 
   img_path = sys.argv[1]
-  print(perform_inference(img_path)) 
+  print(perform_inference(img_path))
 
 if __name__ == '__main__':
   main()
