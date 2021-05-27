@@ -1,5 +1,5 @@
 # Usage
-**MacOS/Linux/Windows w/o CUDA** 
+**MacOS/Linux/Windows without CUDA** 
 ```
 pip install torch torchvision
 python setup.py
