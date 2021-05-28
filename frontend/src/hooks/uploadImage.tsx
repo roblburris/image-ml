@@ -1,5 +1,5 @@
 import React from 'react';
-import { backendPrefix, progressState, resultsState } from '../types';
+import { backendPrefix, loadingState, progressState, resultsState } from '../types';
 
 type fileSelectReturn = {
   imgURL: string,
@@ -32,7 +32,6 @@ const uploadImage = async (progress: number, setProgress: React.Dispatch<React.S
     })
 
     let formData = new FormData();
-    console.log(upload.files![0].type);
     formData.append("ml-image", upload.files![0]);
 
     res({
@@ -42,8 +41,14 @@ const uploadImage = async (progress: number, setProgress: React.Dispatch<React.S
   });
 
   // Process
-  setState(progressState);
   setImageURL(fileData.imgURL);
+  await new Promise<void>((res, _) => {
+    setTimeout(() => {
+      res();
+    }, 500)
+  }) // So that animations work
+
+  setState(progressState);
 
   while (progress <= 100) {
     await new Promise<void>((res, _) => {
@@ -56,10 +61,28 @@ const uploadImage = async (progress: number, setProgress: React.Dispatch<React.S
     progress += 10;
     setProgress(progress);
   }
-  setState(resultsState);
+
+  // Wait for server to process
+
+  // For button animation
+  setProgress(120);
+  await new Promise<void>((res, _) => {
+    setTimeout(() => {
+      res();
+    }, 500)
+  })
+
+  setState(loadingState);
+  await new Promise<void>((res, _) => {
+    // Make this wait for request
+    setTimeout(() => {
+      res();
+    }, 1000)
+  })
 
   // Get results from request
   setLabel("Dog");
+  setState(resultsState);
 }
 
 export default uploadImage;
