@@ -7,12 +7,13 @@ function App() {
   const [state, setState] = useState(homePageState);
   const [imageURL, setImageURL] = useState("");
   const [label, setLabel] = useState("");
+  const [progress, setProgress] = useState(homePageState);
 
   return (
     <>
     <AppBar/>
     <div className="App">
-      <CenterWrapper setState={setState} state={state} imageURL={imageURL} setImageURL={setImageURL} label={label} setLabel={setLabel}/>
+      <CenterWrapper setState={setState} state={state} imageURL={imageURL} setImageURL={setImageURL} label={label} setLabel={setLabel} progress={progress} setProgress={setProgress}/>
     </div>
     </>
   );
