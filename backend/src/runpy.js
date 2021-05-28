@@ -4,7 +4,7 @@ import { join } from "path";
 
 export default function(filename) {
 	return new Promise((resolve, reject) => {
-		let dataToSend;
+		let dataToSend = "";
 	
 		const py = spawn('python', [join(pyPath, "ml.py"), filename]);
 
