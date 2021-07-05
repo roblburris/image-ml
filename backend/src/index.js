@@ -11,7 +11,7 @@ import runpy from "./runpy.js";
 import { writeFile, unlink } from "fs";
 import { join } from "path";
 
-app.get("/", (req, res) => {
+/* app.get("/", (req, res) => {
 	res.send(`
 		<style>
 
@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 			<button type="submit">Submit</button>
 		</form>
 	`);
-});
+}); */
 
 app.post("/", fileUpload({
 	limits: {
