@@ -37,7 +37,6 @@ app.post("/", fileUpload({
 		files: 1,
 		parts: 1,
 	},
-	useTempFiles : true,
 	tempFileDir : tmpPath,
 	uriDecodeFileNames: true,
 	abortOnLimit: true,
@@ -50,16 +49,15 @@ app.post("/", fileUpload({
 		console.log({ message: "No file with name ml-image passed", additionalInfo: "None"});
 		return res.json({ message: "No file with name ml-image passed", additionalInfo: "None"});
 	}
+
+	const mimes = [
+		"image/gif",
+		"image/jpeg",
+		"image/png",
+		"image/webp"
+	];
 	
-	if(
-		[
-			"image/gif",
-			"image/jpeg",
-			"image/png",
-			"image/svg+xml",
-			"image/webp"
-		].indexOf(req.files["ml-image"].mimetype) < 0
-	) {
+	if(mimes.indexOf(req.files["ml-image"].mimetype) < 0) {
 		console.log({ message: `Invalid mime type "${req.files["ml-image"].mimetype}" for file`, additionalInfo: "None"});
 		return res.json({ message: `Invalid mime type "${req.files["ml-image"].mimetype}" for file`, additionalInfo: "None"});
 	}
@@ -68,13 +66,15 @@ app.post("/", fileUpload({
 
 	writeFile(
 		join(tmpPath, req.files["ml-image"].name), req.files["ml-image"].data,
-		(werr) => {
+		async (werr) => {
 			if(werr) {
-				console.log({ message: "Error writing to file", additionalInfo: werr });
 				return res.json({ message: "Error writing to file", additionalInfo: werr })
 			}
 			console.log("Wrote file");
-			runpy(req.files["ml-image"].tempFilePath).then((resp) => {
+			try {
+				console.log(join(tmpPath, req.files["ml-image"].name));
+				const resp = await runpy(join(tmpPath, req.files["ml-image"].name));
+				if(typeof resp != "string" && resp !== 0) return res.json({error: `Error, exit code ${resp}`})
 				console.log("Ran file: " + resp);
 				res.json({ label: resp });
 				unlink(
@@ -83,7 +83,7 @@ app.post("/", fileUpload({
 						if (err) console.error("Error deleting file!");
 					}
 				);
-			}).catch((rerr) => {
+			} catch(rerr) {
 				res.json({ message: "Error generating label", additionalInfo: rerr });
 				unlink(
 					join(tmpPath, req.files["ml-image"].name),
@@ -91,7 +91,7 @@ app.post("/", fileUpload({
 						if (err) console.error("Error deleting file!");
 					}
 				);
-			});
+			}
 		}
 	);
 });
