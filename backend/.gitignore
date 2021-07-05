@@ -1,2 +1,4 @@
 node_modules
 src/python/venv
+tmp/*
+!tmp/.gitkeep

@@ -44,16 +44,16 @@ def perform_inference(path):
   predicted_index = torch.argmax(prob)
   
   try:
-    with open("imagenet_classes.txt", "r") as f:
+    with open(sys.argv[2], "r") as f:
       categories = [s.strip() for s in f.readlines()]
     
     return categories[predicted_index]
   except:
-    return 'ERROR: unable to perform inference'  
+    return f'ERROR: unable to perform inference: {sys.exc_info()[0]}'  
 
 def main():
-  if len(sys.argv) != 2:
-    print('ERROR: incorrect usage, correct usage `python ml.py IMG_PATH`')
+  if len(sys.argv) != 3:
+    print('ERROR: incorrect usage, correct usage `python ml.py IMG_PATH CLASSES_TXT_PATH`')
     return
 
   img_path = sys.argv[1]
@@ -61,4 +61,3 @@ def main():
 
 if __name__ == '__main__':
   main()
-
